@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity implements AddCityFragment.A
         cityAdapter = new CityArrayAdapter(this, dataList);
         cityList.setAdapter(cityAdapter);
 
-        findViewById(R.id.button_add_city).setOnClickListener( v ->
-            AddCityFragment.newInstance().show(getSupportFragmentManager(), "AddCity")
-        );
         FloatingActionButton fab = findViewById(R.id.button_add_city);
         fab.setOnClickListener(v -> {
             new AddCityFragment().show(getSupportFragmentManager(), "Add City");
@@ -62,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements AddCityFragment.A
         cityList.setOnItemClickListener((parent, view, position, id) -> {
             City city = cityAdapter.getItem(position);
             if (city != null){
-                AddCityFragment.newInstance(city).show(getSupportFragmentManager(), "EditCity");
+                new AddCityFragment(city).show(getSupportFragmentManager(), "Edit City");
             }
         });
     }
